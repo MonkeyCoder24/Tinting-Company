@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrismFade - Luxurious Tinting Services</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: linear-gradient(rgba(8, 30, 68, 0.68), rgba(8, 30, 68, 0.68)),
+                        url("tinting-worker.png") center/cover fixed no-repeat;
+            color: #f5f7fa;
+        }
+        header,
+        section,
+        footer {
+            background: rgba(8, 30, 68, 0.72);
+        }
+        .hero {
+            padding: 120px 20px 60px;
+            background: transparent;
+        }
+        .hero-content h1,
+        .hero-content p,
+        .hero-button {
+            color: #fdfdfd;
+        }
+        .hero-visual {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">PrismFade</div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>PrismFade</h1>
+            <p>Elevate Your Space with Luxurious Tinting Solutions</p>
+            <button type="button" class="cta-button hero-button">Discover Elegance</button>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <h2>Our Exclusive Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>Residential Tinting</h3>
+                <p>Transform your home into a sanctuary of comfort and style. Our premium residential tinting enhances energy efficiency, reduces glare, and provides unparalleled privacy with sophisticated, durable materials.</p>
+            </div>
+            <div class="service-card">
+                <h3>Commercial Tinting</h3>
+                <p>Elevate your business environment with our elite commercial solutions. Create productive workspaces while significantly reducing energy costs and maintaining a professional, luxurious aesthetic.</p>
+            </div>
+            <div class="service-card">
+                <h3>Automotive Tinting</h3>
+                <p>Indulge in the ultimate driving experience. Our automotive tinting protects your vehicle's interior from harmful UV rays, minimizes heat buildup, and adds a layer of sophisticated privacy and elegance.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <h2>Why Choose PrismFade</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>At PrismFade, we embody the perfect fusion of luxury and simplicity. Our artisans bring decades of expertise to every project, ensuring that each tinting solution is not merely applied, but crafted as a masterpiece.</p>
+                <p>We source only the finest materials, combining cutting-edge technology with timeless elegance. Our commitment to excellence means every client receives personalized service that exceeds expectations.</p>
+                <p>Experience the PrismFade difference – where sophistication meets serenity, and your vision becomes reality.</p>
+            </div>
+            <div class="about-highlights">
+                <ul>
+                    <li><strong>Unparalleled Expertise:</strong> Master craftsmen with extensive industry knowledge</li>
+                    <li><strong>Premium Materials:</strong> Only the highest quality tinting films and equipment</li>
+                    <li><strong>Personalized Service:</strong> Tailored solutions for your unique needs</li>
+                    <li><strong>Lifetime Warranty:</strong> Confidence in our superior craftsmanship</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2>Begin Your Transformation</h2>
+        <form id="contact-form" class="contact-form">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 PrismFade Tinting Company. All rights reserved.</p>
+        <div class="social-links">
+            <a href="#" aria-label="Facebook">📘</a>
+            <a href="https://www.instagram.com/wintrxz/" aria-label="Instagram">📷</a>
+            <a href="#" aria-label="LinkedIn">💼</a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <!-- EmailJS SDK (for sending form data from the client) -->
+    <script type="text/javascript" src="https://cdn.emailjs.com/sdk/3.2.0/email.min.js"></script>
+</body>
+</html>
