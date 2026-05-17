@@ -64,6 +64,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const contactForm = document.getElementById('contact-form');
     
     if (contactForm) {
+        if (typeof emailjs !== 'undefined' && typeof emailjs.init === 'function') {
+            emailjs.init('gonIFJX4jtRyJIj3l');
+            console.log('EmailJS initialized.');
+        } else {
+            console.warn('EmailJS SDK not loaded or init unavailable.');
+        }
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -92,11 +98,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
             const serviceID = 'service_02fy89r';
             const templateID = 'template_udaff61';
+            if (serviceID.startsWith('service_') && templateID.startsWith('template_') && emailjs.userID === undefined) {
+                // leave as-is; just check for placeholder-like values later
+            }
             const templateParams = {
                 from_name: name,
                 from_email: email,
-                message: message
+                message: message,
+                to_email: 'epicinstinct24@hotmail.com'
             };
+
+            if (serviceID === 'service_02fy89r' || templateID === 'template_udaff61') {
+                console.warn('EmailJS serviceID or templateID may still be placeholder values. Replace them with your real EmailJS IDs.');
+            }
 
             emailjs.send(serviceID, templateID, templateParams)
                 .then(function(response) {
@@ -104,7 +118,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     contactForm.reset();
                 }, function(error) {
                     console.error('EmailJS error:', error);
-                    alert('Sorry, the email service failed to send your message. Please try again later.');
+                    const detail = error && (error.text || error.statusText || error.toString());
+                    alert('Sorry, the email service failed to send your message. Please try again later.' + (detail ? '\n\nDetails: ' + detail : ''));
                 });
         });
     }
