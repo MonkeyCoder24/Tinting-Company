@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (contactForm) {
         // Initialize EmailJS if available. Replace the placeholder with your EmailJS user ID.
         if (typeof emailjs !== 'undefined') {
-            emailjs.init('YOUR_EMAILJS_USER_ID');
+            emailjs.init('gonIFJX4jtRyJIj3l');
         }
 
         contactForm.addEventListener('submit', function(e) {
