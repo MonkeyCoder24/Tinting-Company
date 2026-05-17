@@ -64,10 +64,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const contactForm = document.getElementById('contact-form');
     
     if (contactForm) {
-        if (typeof emailjs !== 'undefined' && emailjs.init) {
-            emailjs.init('gonIFJX4jtRyJIj3l');
-        }
-
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -86,8 +82,12 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             if (typeof emailjs === 'undefined' || !emailjs.send) {
-                alert('Email service is unavailable right now. Please try again later.');
+                alert('Email service is unavailable right now. Please refresh the page and try again.');
                 return;
+            }
+
+            if (typeof emailjs.init === 'function') {
+                emailjs.init('gonIFJX4jtRyJIj3l');
             }
 
             const serviceID = 'service_02fy89r';
