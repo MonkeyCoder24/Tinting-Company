@@ -64,8 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const contactForm = document.getElementById('contact-form');
     
     if (contactForm) {
-        // Initialize EmailJS if available. Replace the placeholder with your EmailJS user ID.
-        if (typeof emailjs !== 'undefined') {
+        if (typeof emailjs !== 'undefined' && emailjs.init) {
             emailjs.init('gonIFJX4jtRyJIj3l');
         }
 
@@ -85,8 +84,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 alert('Please enter a valid email address.');
                 return;
             }
-            
-            // Try sending via EmailJS (fully automatic). Replace service/template IDs below.
+
+            if (typeof emailjs === 'undefined' || !emailjs.send) {
+                alert('Email service is unavailable right now. Please try again later.');
+                return;
+            }
+
             const serviceID = 'service_02fy89r';
             const templateID = 'template_udaff61';
             const templateParams = {
@@ -95,26 +98,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 message: message
             };
 
-            if (typeof emailjs !== 'undefined' && emailjs.send) {
-                emailjs.send(serviceID, templateID, templateParams)
+            emailjs.send(serviceID, templateID, templateParams)
                 .then(function(response) {
                     alert('Message sent! Thank you — we will contact you soon.');
                     contactForm.reset();
                 }, function(error) {
                     console.error('EmailJS error:', error);
-                    // Fallback to opening the user's email client if EmailJS fails
-                    const mailtoLink = `mailto:epicinstinct24@hotmail.com?subject=${encodeURIComponent(`PrismFade contact from ${name}`)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
-                    window.location.href = mailtoLink;
-                    alert('Failed to send automatically — your email app will open so you can send the message.');
-                    contactForm.reset();
+                    alert('Sorry, the email service failed to send your message. Please try again later.');
                 });
-            } else {
-                // If EmailJS SDK isn't loaded, fall back to mailto
-                const mailtoLink = `mailto:epicinstinct24@hotmail.com?subject=${encodeURIComponent(`PrismFade contact from ${name}`)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
-                window.location.href = mailtoLink;
-                alert('Email service not initialized. Your email app will open to send the message.');
-                contactForm.reset();
-            }
         });
     }
 
