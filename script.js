@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 emailjs.init('gonIFJX4jtRyJIj3l');
             }
 
-            const serviceID = 'service_02fy89r';
+            const serviceID = 'service_rebteiv';
             const templateID = 'template_udaff61';
             if (serviceID.startsWith('service_') && templateID.startsWith('template_') && emailjs.userID === undefined) {
                 // leave as-is; just check for placeholder-like values later
@@ -107,10 +107,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 message: message,
                 to_email: 'epicinstinct24@hotmail.com'
             };
-
-            if (serviceID === 'service_02fy89r' || templateID === 'template_udaff61') {
-                console.warn('EmailJS serviceID or templateID may still be placeholder values. Replace them with your real EmailJS IDs.');
-            }
 
             emailjs.send(serviceID, templateID, templateParams)
                 .then(function(response) {
