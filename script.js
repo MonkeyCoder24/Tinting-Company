@@ -75,6 +75,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             const name = document.getElementById('name').value.trim();
             const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
             const message = document.getElementById('message').value.trim();
             
             if (!name || !email || !message) {
@@ -104,6 +105,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const templateParams = {
                 from_name: name,
                 from_email: email,
+                phone_number: phone,
                 message: message,
                 to_email: 'epicinstinct24@hotmail.com'
             };
